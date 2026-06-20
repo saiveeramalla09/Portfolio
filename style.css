@@ -1,0 +1,1095 @@
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+/* 
+  Project: CSS Glowing Button
+  Created: Sunday, 06 March 2022
+  Author: Jamshid Elmi 
+  Tutorial: https://youtu.be/b_8fHNIHFk4
+*/
+
+
+/* button */
+.btn {
+  margin-top: 10px;/* distance from above */
+  background-color: #0077b5;
+  border: none;
+  padding: 12px 30px; /* box area length and width */
+  font-weight: bold;
+  transition: 1s;
+  color: #FFF;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 12px;
+}
+.btn::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #030202;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+.btn::before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #FF0000, #FF7300, #FFFB00, #48FF00,
+    #00FFD5, #002BFF, #FF00C8, #FF0000
+  );
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height:  calc(100% + 4px);
+  filter: blur(5px);
+  animation: glowing 20s linear infinite;
+  transition: opacity .5s ease-in-out;
+  border-radius: 10px;
+  opacity: 1;
+}
+
+@keyframes glowing {
+  0% {background-position: 0 0;}
+  50% {background-position: 400% 0;}
+  100% {background-position: 0 0;}
+}
+
+/* hover */
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn:active:after {
+  background: transparent;
+}
+
+.btn:active {
+  color: #000;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap: wrap;
+
+    width: 100%;
+
+    background:rgba(255,255,255,0.2);
+
+    backdrop-filter:blur(10px);
+
+    position:fixed;
+
+    top:0;
+
+    z-index:1000;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+
+    font-size:1.5rem;
+
+    font-weight:bold;
+
+    color:rgb(12, 12, 12);
+
+    cursor:pointer;
+
+    position: relative;
+}
+.logo:after{
+  content: "";
+  position: absolute;
+  background-color: rgb(250, 246, 246);
+  width:0%;
+  height:2px;
+  left:6px;
+  transition: all 0.3s ease;
+  bottom:-5px;
+}
+
+.logo:hover::after{
+  width: 100%;
+  transform: scale(1.1);
+}
+
+
+/* =========================
+   NAV LINKS
+========================= */
+
+.nav-links{
+
+    display:flex;
+
+    list-style:none;
+
+    gap: 50px;
+}
+
+
+/* =========================
+   NAV LINK STYLE
+========================= */
+
+
+.nav-links li{
+  transition: all 0.5s ease;
+}
+
+.nav-links li:hover{
+  transform: scale(1.05);
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:rgb(240, 239, 239);
+
+    font-size:1.1rem;
+
+    font-weight:bold;
+
+    text-align: center;
+
+    position:relative;
+
+    transition:0.3s;
+}
+
+
+/* =========================
+   HOVER UNDERLINE EFFECT
+========================= */
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-5px;
+
+    width:0%;
+
+    height:2px;
+
+    background:rgb(21, 21, 20);
+
+    transition:0.3s;
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+    border-color: black;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+
+/* =========================
+   RIGHT SIDE ACTIONS
+========================= */
+
+.nav-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+/* =========================
+   SEARCH BOX
+========================= */
+
+.search-box{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+/* =========================
+   SEARCH INPUT
+========================= */
+
+.search-input{
+
+    padding:10px 10px;
+
+    border:none;
+
+    border-radius:30px;
+
+    outline:none;
+
+    width:180px;
+
+    transition:0.3s;
+}
+
+
+/* =========================
+   SEARCH INPUT FOCUS
+========================= */
+
+.search-input:focus{
+
+    transform:scale(1.03);
+
+    box-shadow:0 0 10px white;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.search-btn,
+.logout-btn{
+
+    padding:10px 10px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:white;
+
+    color:#6a11cb;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    transition:0.3s;
+}
+
+
+/* =========================
+   BUTTON HOVER
+========================= */
+
+.search-btn:hover,
+.logout-btn:hover{
+
+    background:black;
+
+    color:white;
+
+    transform:translateY(-3px);
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media(max-width:1000px){
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:20px;
+    }
+
+    .nav-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:10px;
+    }
+
+}
+
+
+/* =========================
+   MOBILE VIEW
+========================= */
+
+@media(max-width:700px){
+
+    .navbar{
+
+        padding:20px;
+    }
+
+    .nav-links{
+        display: flex;
+
+        align-items:center;
+
+        gap:5px;
+    }
+
+    .nav-actions{
+
+        flex-direction:column;
+
+        width:100%;
+    }
+
+    .search-box{
+
+        width:100%;
+
+        justify-content:center;
+    }
+
+    .search-input{
+
+        width:100%;
+
+        max-width:300px;
+    }
+
+    .logo{
+
+        font-size:24px;
+    }
+
+}
+
+
+/* =========================
+   EXTRA SMOOTH ANIMATION
+========================= */
+
+html{
+
+    scroll-behavior:smooth;
+}
+
+
+
+
+/* SALUTATION BOX */
+
+
+
+
+
+
+
+
+.sal-box{
+    justify-content: center; /* Centers the card horizontally */
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    margin-top:100px;
+}
+
+.wrapper{
+    float:inline-start;  /* Pushes image to the left, text wraps to the right */
+    margin-right: 15px; /* Adds space so the text doesn't touch the image */
+    width: 100px;
+    height: auto;
+}
+
+.salu{
+    background-color: rgb(7, 234, 230);
+    border:1px solid white;
+    font-weight: bold;
+    text-shadow: #0077b5;   
+    margin-top: 10px;
+    max-width: 300px;
+    width: 100%;
+    border-radius:50px;
+    justify-content: center;
+    text-align:center;  
+    padding: 10px 30px;
+    transition: background-color 1s ease-in 0s;
+
+}
+
+.salu:hover{
+  background-color: rgb(182, 131, 11);
+}
+
+body{
+  background-color: #f0f0f0; /* Light gray background */
+  background-image: url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop");
+  background-size: cover;        /* Stretches the image to fill the screen */
+  background-position: center;   /* Centers the background image */
+  background-repeat: no-repeat;  /* Prevents tiling/repeating */
+  background-attachment:scroll;  /* Keeps the background steady while scrolling */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+
+/*ABOUT ME SECTION*/
+
+
+
+/* 
+
+.full{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+
+
+.about-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: #278e5f ;
+  align-items: center;
+  gap: 50px;
+  max-width: 800px;
+  width: 100%;
+  color: white;
+  margin: 0 auto;
+  padding: 50px;
+  position: relative;
+  z-index: 0;
+  box-sizing: border-box;
+}
+.about-container::after{
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #191a19  ;
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+
+}
+.about-container::before{
+  content: "";
+  position: absolute;
+  background: linear-gradient(
+    45deg,
+    #FF0000, #FF7300, #FFFB00, #48FF00,
+    #00FFD5, #002BFF, #c9eb04, #FF0000
+  );
+  top: 0px;
+  left: 0px;
+  background-size: 1000%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height:  calc(100% + 4px);
+  filter: blur(10px);
+  animation: glowing 20s linear infinite;
+  transition: opacity .5s ease-in-out;
+  border-radius: 30px;
+  opacity: 1;
+}
+@keyframes glowing {
+  0% {background-position: 0 0;}
+  50% {background-position: 200% 0;}
+  100% {background-position: 0 0;}
+}
+
+
+
+
+.about-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 50px;
+  object-fit: cover;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+  margin-left: 0 auto;
+  transition: transform  1.5s ease 0ms, height 1.5s ease 0s;
+  max-width: 100%;
+  height: auto;
+}
+.about-pic:hover {
+  transform:rotate(360deg);
+  height:110px;
+}
+
+.about-text {
+  color: rgb(26, 25, 25);              /* Matches your text color choice */
+  text-align: center;
+  border-radius: 50px;
+  border: 2px solid #00FFD5; 
+  /* Optional: Add a subtle glow to make it pop */
+  box-shadow: 0 0 10px rgba(0, 255, 213, 0.3); 
+  color:white;
+  background: linear-gradient(
+   45deg,
+  #141e30,
+  #0b6ddc
+  );
+  font-size: 20px;      /* Keeps text aligned cleanly next to the image*/
+  font-style:bold;
+
+  transition: background-color 2s ease 0ms;
+}
+.about-text:hover{
+  background-color:rgb(6, 21, 22);
+}
+.fonkt{
+  font-weight: bold;
+  color:white;
+}
+
+
+
+
+h1 {
+    color: #2c3e50; /* Dark blue-ish for the title */
+    text-align:center;
+}
+.highlight {
+    color: #e74c3c; /* A nice red for your name */
+    font-weight: bold;
+}
+.info {
+    color: #2d6f3b; /* Gray for details */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CONTAINER OF INSTA , LINKED IN , GITHUB */
+
+
+
+
+
+
+
+
+
+
+
+.animate-scroll{
+    text-align: center;
+    align-items: center;
+    width: auto;
+    max-width: max-content;
+    padding: 10px 20px;
+    margin: 0 auto 20px auto; /* Centers it and adds space below */
+  
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-title {
+  width: auto;
+  max-width: max-content;
+  padding: 10px 20px;
+  margin: 40px auto 20px auto; /* Centers it and adds space below */
+  
+  font-weight: 900;
+  border-radius: 30px;
+  border:2px solid rgb(32, 31, 31);
+  font-size: larger;
+  background-color: #00ffcc;  
+  text-align: center;
+  align-items: center;
+}
+
+.social-links {
+   display: flex;
+  justify-content: center; /* Centers them horizontally */
+  align-items: center;
+  gap: 15px;               /* Adds clean spacing between buttons */
+  flex-wrap: wrap;         /* THE MAGIC LINE: enables responsiveness */
+  padding: 10px;
+}
+
+/* Styling individual cards */
+.social-card {
+    display: flex;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 50px; /* Makes them pill-shaped */
+    text-decoration: none; /* we can take like whis blue wavy underline */
+    color: #333;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease; /* The magic for smooth hover */
+}
+
+.social-card img{
+    width: 26px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Hover Effects: Making it interactive */
+.social-card:hover {
+    transform: translateY(-6px); /* Moves up slightly */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* Platform specific colors on hover */
+.linkedin:hover { background-color: #41df70; color: rgb(14, 14, 14); }
+.instagram:hover { background-color: #41df70; color: rgb(14, 14, 14); }
+.github:hover { background-color: #41df70; color: rgb(14, 14, 14); } 
+
+
+
+
+
+
+/* PROJECTS SECTION */
+
+
+.projects{
+    padding: 40px 40px;;
+    margin:30px ;
+}
+.projects-title{
+    width:400px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    margin-bottom: 50px;
+    transition: 1s;
+}
+/* @keyframes move {
+  from{
+    left:-5vw;
+    
+  }
+  to{
+    left:60vw;
+  }
+} */
+
+.projects-title h1{
+    background: #00ffd5;
+    padding: 20px 40px;
+    border-radius: 20px;
+    border: 3px solid black;
+}
+.projects-container{
+    display: grid; /* Items in ONE direction since we have many cards row and col*/
+
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /*best thing without using media querys*/
+
+    gap: 30px;/* always use the gap , instead of margin*/
+} 
+.project-card{
+    background: #e8cf84;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    border: 2px solid white;
+
+    display: flex; /*each project card*/
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    transition: 0.3s;
+}
+.project-card:hover{
+    transform: translateY(-20px);
+}
+.btn{
+    text-decoration: none;
+
+    justify-content: center;
+    background: black;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    width: fit-content;
+}
+
+
+
+
+
+
+/* SCROLLING BAR */
+
+
+
+
+
+.ticker-wrapper {
+  overflow:hidden;
+  backdrop-filter: blur(5px);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  padding: 50px 0;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: scrollLinear 10s linear infinite;
+}
+
+.ticker-item {
+  padding: 0 40px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+ 
+ @keyframes scrollLinear {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Moves exactly half the track width */
+  }
+}
+
+
+
+
+
+
+
+
+/* FEED BACK SECTION */ 
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Responsive Design: Media Queries
+
+@media (max-width: 1024px) {
+  .about-container {
+    padding: 30px;
+    gap: 30px;
+  }
+  .projects {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .Eachone {
+    margin: 10px;
+    gap: 10px;
+  }
+  .card-wrapper {
+    gap: 15px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px 10px;
+    gap: 1 rem;
+  }
+  .nav-links {
+    gap: 0.8 rem;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+  }
+  .about-pic {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 15px;
+  }
+  .projects {
+    margin-left: 0;
+    margin-right: 0;
+    gap: 10px;
+  }
+  .Eachone {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 10px 0;
+    gap: 10px;
+  }
+  .pro1, .pro2 {
+    margin: 10px auto;
+    max-width: 95vw;
+    min-width: unset;
+  }
+  .card-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 5px;
+    max-width: 98vw;
+  }
+  .feedback-card, .contact-card {
+    min-width: unset;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 15px;
+  }
+  .navbar {
+    flex-direction: column;
+    padding: 5px 2px;
+    gap: 5px;
+  }
+  .logo {
+    font-size: 16px;
+    margin-left: 0;
+    padding: 5px;
+  }
+  .about-container {
+    padding: 10px;
+    gap: 10px;
+    border-radius: 15px;
+  }
+  .about-pic {
+    width: 80px;
+    height: 80px;
+  }
+  .about-text {
+    font-size: 16px;
+    padding: 10px;
+  }
+  .projects {
+    margin: 0;
+    gap: 5px;
+  }
+  .Eachone {
+    flex-direction: column;
+    margin: 5px 0;
+    gap: 5px;
+    border-radius: 15px;
+    padding: 5px;
+  }
+  .pro1, .pro2 {
+    margin: 5px auto;
+    max-width: 99vw;
+    padding: 10px 5px;
+    border-radius: 10px;
+    min-height: unset;
+  }
+  .card-wrapper {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 2px;
+    max-width: 99vw;
+  }
+  .feedback-card, .contact-card {
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 15px;
+  }
+  .section-title, .title2 {
+    font-size: 1rem;
+    padding: 6px 10px;
+    border-radius: 15px;
+  }
+  .social-links {
+    gap: 8px;
+    padding: 5px;
+  }
+  .social-card {
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 20px;
+  }
+  .social-card img {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+  }
+  .btn, .btn-primary, .send-btn, .sub-but {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 15px;
+  }
+  textarea {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+}
+
+
+
+/*
+@media (max-width: 900px) {
+  .feedback-card, .contact-card {
+    min-width: 200px;
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .feedback-card, .contact-card {
+    min-width: 0;
+    width: 100%;
+    padding: 8px 4px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    margin: 0 0 12px 0;
+    word-break: break-word;
+  }
+  .card-wrapper {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 2px;
+    max-width: 99vw;
+  }
+} */
+
+
+
+
+
+
+
+
+
+/* This forces the two cards to sit side-by-side */
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* MAKE SURES THAT AFTER SQUEEZING THE OTHER BLOCK GOES DOWN*/
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  max-width: 1000px;
+  margin:40px auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Ensure both cards take up equal or flexible space and are responsive */
+.feedback-card, .contact-card {
+  flex: 1;
+  min-width: 300px;
+  background-color: #040404;
+  border-style: solid;
+  color: white;
+  border-radius: 50px;
+  border-color: rgb(191, 241, 11);
+  border-width: 3px;
+  padding: 40px;
+  box-shadow: 0px 4px 15px rgba(235, 220, 7, 0.1);
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 0 20px 0;
+}
+.contact-card {
+  background-color: #030303;
+}
+
+  textarea {
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
+    border: 2px solid #eee;
+    text-align: left;
+    border-radius: 10px;
+    font-family: inherit;
+    resize: vertical; /* Allows user to pull the box down but not sideways */
+    box-sizing: border-box; /* Ensures padding doesn't break the width */
+  }
+
+  /* Changes border color when you click to type */
+  textarea:focus {
+    border-color: #069bff;
+    outline:none;
+
+  }
+
+  
+
